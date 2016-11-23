@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>vue-project</title>
+    <style type="text/css">
+    *{
+      margin:0;
+      padding:0;
+    }
+    header{
+      width:100%;
+      height:50px;
+      background:#09C;
+      z-index:2;
+    }
+    .main{
+      width:100%;
+      position:absolute;
+      top:50px;
+      bottom:0;
+    }
+    .aside{
+      width:160px;
+      height:100%;
+      background:#324057;
+      overflow:auto;
+    }
+    .aside a{
+      text-decoration:none;
+    }
+    .content{
+      position:absolute;
+      width:auto;
+      top:0;
+      bottom:0;
+      left:160px;
+      right:0;
+      background:#fff;
+    }
+    .content-aside{
+      width:0;
+      float:left;
+      background:#eff2f7;
+      position:absolute;
+      top:0;
+      bottom:0;
+      overflow:hidden;
+      transition:all .2s ease;
+    }
+    .show.content-aside{
+      width:130px;
+    }
+    .show.content-aside ~ .content-detail{
+      left:140px;
+    }
+    .ca-list{
+      width:130px;
+      position:absolute;
+      top:0;
+      right:0;
+      bottom:0;
+      left:-130px;
+      transition:all .2s;
+    }
+
+    .show.content-aside .ca-list{
+      left:0px;
+    }
+    .ca-title{
+      width:100%;
+      height:60px;
+      font-size:20px;
+      padding-top:20px;
+      padding-left:20px;
+      font-family: "microsoft yahei";
+    }
+    .content-aside a{
+      text-decoration:none;
+    }
+    .toggle{
+      position:absolute;
+      top:300px;
+      left:0;
+      z-index:10;
+      transition:all .2s ease;
+    }
+    .toggle.show{
+      left:115px;
+    }
+    .content-detail{
+      width:auto;
+      position:absolute;
+      top:0;
+      right:0;
+      bottom:0;
+      left:0;
+      padding-left:10px;
+      overflow:hidden;
+      transition:all .2s ease;
+      z-index:8;
+    }
+
+    .router-show{
+      background:lightblue;
+    }
+
+    .aside a.active li{
+      color:#20a0ff !important;
+    }
+    .content-aside a.active li{
+      color:#20a0ff !important;
+    }
+
+    .toggle button{
+      transition:all .2s ease;
+    }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <div class="main">
+      <div class="aside" id="aside">
+        <el-menu class="el-menu-vertical-demo" theme="dark">
+          <router-link to="/menu" class="router" active-class="active"><el-menu-item index="1"><i class="el-icon-menu"></i>首页分类导航</el-menu-item></router-link>
+          <router-link to="/ad" class="router" active-class="active">
+          <el-menu-item index="2"><i class="el-icon-menu"></i>广告位</el-menu-item>
+          </router-link>
+          <router-link to="/data" class="router" active-class="active"><el-menu-item index="3"><i class="el-icon-setting"></i>推荐数据运营区</el-menu-item></router-link>
+          <router-link to="/api" class="router" active-class="active"><el-menu-item index="4"><i class="el-icon-setting"></i>API页面</el-menu-item></router-link>
+          <router-link to="/login" class="router" active-class="active"><el-menu-item index="5"><i class="el-icon-setting"></i>登录注册</el-menu-item></router-link>
+          <router-link to="/user" class="router" active-class="active"><el-menu-item index="6"><i class="el-icon-setting"></i>个人中心</el-menu-item></router-link>
+          <router-link to="/friend" class="router" active-class="active"><el-menu-item index="7"><i class="el-icon-setting"></i>合作伙伴</el-menu-item></router-link>
+        </el-menu>
+      </div>
+      <router-view></router-view>
+    </div>
+
+  </body>
+</html>
