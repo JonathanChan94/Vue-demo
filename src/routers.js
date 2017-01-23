@@ -6,8 +6,7 @@ import menu from './components/menu'
 import typename from './components/typename'
 import sort from './components/sort'
 import ad from './components/ad'
-import big from './components/big'
-import small from './components/small'
+import banner from './components/banner'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 // import App from './components/App'
@@ -23,32 +22,68 @@ const routes = [
   { path: '/menu', component: menu ,
 	children:[
 	  {
-	  	path:'/menu/typename',
+	  	path:'typename',
 	    component: typename
 	  },{
-	  	path:'/menu/sort',
+	  	path:'sort',
 	    component:sort
 	  },{
 	  	path:'/',
-	  	component:typename
+	  	redirect:'/menu/typename'
 	  }
 	]	
   },
   { path: '/ad', component: ad ,
 	children:[
 	  {
-	  	path:'/ad/big',
-	    component:big
+	  	path:'big',
+	    component:banner
 	  },{
-	  	path:'/ad/small',
-	    component:small
+	  	path:'small',
+	    component:banner
 	  },{
 	  	path:'/',
-	  	component:big
+	  	redirect:'/ad/big'
 	  }
 	]
   },
-  // { path: 'data', component: data},
+  {
+  	path:'/recommend',component:require('./components/recommend'),
+  	children:[
+  		{
+  			path:'data',
+  			component:require('./components/data')
+  		},
+  		{
+  			path:'leftdata',
+  			component:require('./components/leftdata')
+  		},
+  		{
+  			path:'/',
+  			redirect:'/recommend/data'
+  		}
+  	]
+  },
+  { path: '/api', component: require('./components/api'),
+    children:[
+      	{
+      		path:'api-ad',
+      		component:require('./components/api-ad')
+      	},{
+      		path:'api-data',
+      		component:require('./components/api-data')
+      	},{
+      		path:'api-text',
+      		component:require('./components/api-text')
+      	},{
+      		path:'api-icon',
+      		component:require('./components/api-icon')
+      	},{
+      		path:'/',
+      		redirect:'/api/api-ad'
+      	}
+    ]
+  },
   { path: '/foo', component: ViewA },
   { path: '/bar', component: ViewB }
 ]
@@ -76,7 +111,6 @@ new Vue({
 	router,
 	data:data
 })
-
 
 
 // router.start(App, 'app')

@@ -10,8 +10,8 @@
             </el-menu>
           </div>
         </div>
-        <div id="toggle" class="toggle" v-bind:class="{show:show}">
-          <el-button id="btn" type="text" icon="d-arrow-left" v-on:click="change"></el-button>
+        <div class="toggle" v-bind:class="{show:show}"  v-on:click="show = !show">
+          <!-- <el-button id="btn" type="text" icon="d-arrow-left" v-on:click="change"></el-button> -->
         </div>
         <div class="content-detail">
           <router-view></router-view>
@@ -27,14 +27,14 @@
       return data
     },
     methods:{
-      change:function(event){
-        data.show=!data.show;
-        if(event.target.className=="el-icon-d-arrow-left"){
-          event.target.className="el-icon-menu";
-        }else{
-          event.target.className="el-icon-d-arrow-left";
-        }
-      }
+      // change:function(event){
+      //   data.show=!data.show;
+      //   if(event.target.className=="el-icon-d-arrow-left"){
+      //     event.target.className="el-icon-menu";
+      //   }else{
+      //     event.target.className="el-icon-d-arrow-left";
+      //   }
+      // }
     }
   }
 </script>
